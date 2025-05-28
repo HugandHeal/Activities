@@ -1,0 +1,37 @@
+
+openapi: 3.1.0
+info:
+  title: OT Activities API
+  version: 1.0.0
+  description: OpenAPI περιγραφή για αναζήτηση δραστηριοτήτων εργοθεραπείας από Airtable
+servers:
+  - url: https://api.airtable.com/v0/appsaPUrqm97nXXEE
+paths:
+  /Δραστηριότητες:
+    get:
+      operationId: getActivities
+      summary: Αναζητά δραστηριότητες εργοθεραπείας με λέξη-κλειδί
+      parameters:
+        - in: query
+          name: filterByFormula
+          schema:
+            type: string
+          required: false
+          description: Φόρμουλα για φιλτράρισμα βάσει περιγραφής
+      responses:
+        '200':
+          description: Επιτυχής απάντηση με λίστα δραστηριοτήτων
+      security:
+        - bearerAuth: []
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    Dummy:
+      type: object
+      properties:
+        dummy:
+          type: string
